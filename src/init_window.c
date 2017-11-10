@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 07:55:03 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 10:15:20 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 11:34:24 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	init_window(t_env *env)
 	{
 		j = -1;
 		while (++j < env->line_len)
-			mlx_pixel_put(env->mlx_ptr, env->mlx_win, get_x_coordinate(env->array[i][j]), get_y_coordinate(env->array[i][j]), 16777215);
+			mlx_pixel_put(env->mlx_ptr, env->mlx_win, get_x_coordinate(env->array[i][j], env), get_y_coordinate(env->array[i][j], env), 16777215);
 	}
+	draw_all_lines(env);
 	mlx_loop(env->mlx_ptr);
 }

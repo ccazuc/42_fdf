@@ -6,11 +6,23 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 12:49:31 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 08:33:20 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 11:22:11 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int		get_line_len(char *datas)
+{
+	char	**tmp;
+	int		i;
+
+	tmp = ft_strsplit(datas, ' ');
+	i = 0;
+	while (tmp[i])
+		++i;
+	return (i);
+}
 
 void	check_line_len(t_fdflist *list, t_env *env)
 {
@@ -18,19 +30,21 @@ void	check_line_len(t_fdflist *list, t_env *env)
 	int			last_len;
 	int			len;
 
-	printf("list: %p\n", list);
 	tmp = list;
-	printf("tmp: %p\n", tmp);
 	last_len = -666;
 	while (tmp)
 	{
-		len = ft_strlen(tmp->datas);
+		len = get_line_len(tmp->datas);	
+		printf("len: %d\n", len);
 		if (last_len != -666 && len != last_len)
+		{
+			printf("last_len: %d, len: %d\n", last_len, len);
 			ft_exit("Error, wrong line length.", -1);
+		}
 		tmp = tmp->next;
 		last_len = len;
 	}
 	if (last_len == -666)
 		ft_exit("Error, wrong line length", -1);
-	env->line_len = last_len;
+	env->line_len = len;
 }

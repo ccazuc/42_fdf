@@ -15,6 +15,7 @@ SRCS_NAME = main.c \
 			get_next_line.c \
 			get_coordinates.c \
 			check_file.c \
+			draw_line.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

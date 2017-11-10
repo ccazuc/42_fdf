@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 12:27:49 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 16:22:09 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	draw_line(t_env *env, t_line line)
 		x = (int)(line.src_x + line.diff_x * ratio);
 		y = (int)(line.src_y + line.diff_y * ratio);
 		pixel_put(env, x, y, 16777215);
+		//mlx_pixel_put(env->mlx_ptr, env->mlx_win, x, y, 16777215);
 		ratio += 1. / line.len;
 	}	
 }
@@ -35,7 +36,7 @@ void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
 {
 	t_line	line;
 
-	printf("draw_line_prepare\n");
+	//printf("draw_line_prepare\n");
 	line.src_x = get_x_coordinate(p1, env);
 	line.src_y = get_y_coordinate(p1, env);
 	line.dest_x = get_x_coordinate(p2, env);
@@ -53,7 +54,7 @@ void	draw_all_lines(t_env *env)
 	int		i;
 	int		j;
 
-	printf("line_len: %d\n", env->line_len);
+	//printf("line_len: %d\n", env->line_len);
 	i = -1;
 	while (++i < env->nb_line)
 	{

@@ -17,6 +17,10 @@ SRCS_NAME = main.c \
 			check_file.c \
 			draw_line.c \
 			pixel_put.c \
+			draw_point.c \
+			draw_window.c \
+			key_handler.c \
+			movement_handler.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

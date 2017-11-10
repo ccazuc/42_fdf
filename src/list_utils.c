@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 09:16:08 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 07:53:08 by ccazuc           ###   ########.fr       */
+/*   Created: 2017/11/10 06:31:57 by ccazuc            #+#    #+#             */
+/*   Updated: 2017/11/10 06:34:29 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		main(int argc, char **argv)
+t_fdflist	*create_elem(char *data)
 {
-	t_env	*env;
+	t_fdflist	*result;
 
-	if (!(env = malloc(sizeof(*env))))
-		ft_exit("Error, out of memory.", -1);
-	parse(argc, argv, env);
-	init_window(env);
+	if (!(result = malloc(sizeof(*result))))
+		return (NULL);
+	result->next = NULL;
+	result->datas = data;
+	return (result);
+}
+
+void	list_push_back(t_fdflist **begin_list, char *data)
+{
+	t_fdflist	*list;
+
+	if (!*begin_list)
+	{
+		*begin_list = create_elem(data);
+		return ;
+	}
+	list = *begin_list;
+	while (list->next)
+		list = list->next;
+	list->next = create_elem(data);
 }

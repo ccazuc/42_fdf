@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 09:17:41 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/09 15:02:36 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 08:33:52 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ static int		add_datas(char *datas, t_gnl *env)
 {
 	int		i;
 
-	if (!(env->datas = ft_strjoin_free1(env->datas, datas)))
+	if (env->line == 0)
+		env->datas = ft_strdup(datas);
+	else if (!(env->datas = ft_strjoin_free1(env->datas, datas)))
 		return (-1);
 	i = -1;
 	env->curr_line = -1;

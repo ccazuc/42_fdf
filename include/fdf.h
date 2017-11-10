@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 16:21:23 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 17:57:25 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "fcntl.h"
 # include <stdio.h>
 # include <math.h>
+# include <time.h>
 
 typedef struct			s_point
 {
@@ -66,6 +67,15 @@ typedef struct			s_env
 	int					position_x;
 	int					position_z;
 	int					bpp;
+	int					move_for;
+	int					move_back;
+	int					move_left;
+	int					move_right;
+	int					min_height;
+	int					max_height;
+	time_t				last_time;
+	int					nb_tick;
+	int					fps;
 }						t_env;
 
 void					parse(int argc, char **argv, t_env *env);
@@ -81,11 +91,16 @@ void					draw_all_lines(t_env *env);
 void					pixel_put(t_env *env, int x, int y, unsigned int color);
 void					draw_window(t_env *env);
 void					draw_points(t_env *env);
-int						key_handler(int keycode, void *params);
 void					move_forward(t_env *env);
 void					move_backward(t_env *env);
 void					move_left(t_env *env);
 void					move_right(t_env *env);
+void					move(t_env *env, float angle);
 void					reset_window(t_env *env);
+int						loop_handler(void *datas);
+int						key_down_handler(int keycode, void *datas);
+int						key_up_handler(int keycode, void *datas);
+void					draw_ui(t_env *env);
+int						get_color(t_env *env, int y);
 
 #endif

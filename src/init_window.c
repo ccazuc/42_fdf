@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 07:55:03 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 16:18:38 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 17:18:27 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	init_window(t_env *env)
 	i = -1;
 	env->bpp = bpp;
 	draw_window(env);
-	mlx_key_hook(env->mlx_win, key_handler, env);
+	//mlx_key_hook(env->mlx_win, key_handler, env);
+	//mlx_do_key_autorepeatoff(env->mlx_ptr);
+	mlx_hook(env->mlx_win, 2, 1, key_down_handler, env);
+	mlx_hook(env->mlx_win, 3, 2, key_up_handler, env);
+	mlx_loop_hook(env->mlx_ptr, loop_handler, env);
 	mlx_loop(env->mlx_ptr);
 }

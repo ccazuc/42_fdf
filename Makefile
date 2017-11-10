@@ -21,6 +21,8 @@ SRCS_NAME = main.c \
 			draw_window.c \
 			key_handler.c \
 			movement_handler.c \
+			event_handler.c \
+			draw_ui.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

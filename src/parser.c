@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:19:47 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 11:13:44 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 17:41:38 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ void	create_points(char *datas, t_env *env, int index)
 		point->x = i;
 		point->y = ft_atoi(tmp[i]);
 		point->z = index;
+		if (point->y > env->max_height)
+			env->max_height = point->y;
+		if (point->y < env->min_height)
+			env->min_height = point->y;
 		env->array[point->z][point->x] = *point;
 		free(point);
 	}

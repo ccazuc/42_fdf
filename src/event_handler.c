@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_window.c                                      :+:      :+:    :+:   */
+/*   event_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 15:10:34 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 17:21:17 by ccazuc           ###   ########.fr       */
+/*   Created: 2017/11/10 17:11:24 by ccazuc            #+#    #+#             */
+/*   Updated: 2017/11/10 18:02:17 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw_window(t_env *env)
+int		loop_handler(void *data)
 {
-	draw_points(env);
-	draw_all_lines(env);
-	mlx_put_image_to_window(env->mlx_ptr, env->mlx_win, env->mlx_img, 0, 0);
-}
+	t_env	*env;
 
-void	reset_window(t_env *env)
-{
-	unsigned int	i;
-	unsigned int	len;
-
-	len = WINDOW_WIDTH * WINDOW_HEIGHT * env->bpp / 8;
-	//printf("len: %d\n", len);
-	i = 0;
-	while (i < len)
+	env = data;
+	move(env, 0);
+	env->nb_tick++;
+	if (time(NULL) - env->last_time >= 1)
 	{
-		env->mlx_img_data[i] = 0;
-		++i;
-	}
+		env->last_time = time(NULL);
+		env->fps = env->nb_tick;
+		env->nb_tick = 0;
+	}		
+	draw_ui(env);
+	return (0);
 }

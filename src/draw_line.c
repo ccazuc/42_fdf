@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 16:22:09 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 18:37:56 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	draw_line(t_env *env, t_line line)
 	double	ratio;
 	int		x;
 	int		y;
+	int		height;
 
 	if ((line.src_x < 0 || line.dest_x >= WINDOW_WIDTH) && (line.src_y < 0 ||
 		line.src_y >= WINDOW_HEIGHT))
@@ -24,9 +25,10 @@ void	draw_line(t_env *env, t_line line)
 	ratio = .0;
 	while (ratio <= 1)
 	{
+		height = line.p1.y + (line.p2.y - line.p1.y) * ratio;
 		x = (int)(line.src_x + line.diff_x * ratio);
 		y = (int)(line.src_y + line.diff_y * ratio);
-		pixel_put(env, x, y, 16777215);
+		pixel_put(env, x, y, get_color(env, height));
 		//mlx_pixel_put(env->mlx_ptr, env->mlx_win, x, y, 16777215);
 		ratio += 1. / line.len;
 	}	
@@ -41,6 +43,14 @@ void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
 	line.src_y = get_y_coordinate(p1, env);
 	line.dest_x = get_x_coordinate(p2, env);
 	line.dest_y = get_y_coordinate(p2, env);
+	if (line.src_x < 0 && line.dest_x < 0)
+		return ;
+	if (line.src_y < 0 && line.dest_y < 0)
+		return ;
+	if (line.src_x > WINDOW_WIDTH && line.dest_x > WINDOW_WIDTH)
+		return ;
+	if (line.src_y > WINDOW_HEIGHT && line.dest_y > WINDOW_HEIGHT)
+		return ;
 	line.diff_x = line.dest_x - line.src_x;
 	line.diff_y = line.dest_y - line.src_y;
 	line.p1 = p1;

@@ -1,17 +1,20 @@
-ME = fdf
+NAME = fdf
+
+CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -Ofast
 
 INCLUDES_PATH = include/
 
 SRCS_PATH = src/
 
 SRCS_NAME = main.c \
-			check_file.c \
 			parser.c \
+			list_utils.c \
+			init_window.c \
 			get_next_line.c \
+			get_coordinates.c \
+			check_file.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 
@@ -21,14 +24,13 @@ OBJS_NAME = $(SRCS_NAME:.c=.o)
 
 OBJS = $(addprefix $(OBJS_PATH), $(OBJS_NAME))
 
-LIBRARY = -lm -L libft/ -lft -lmlx -framework OpenGL -framework AppKit
+LIBRARY = -lmlx -L libft -lft -framework OpenGL -framework AppKit
 
 all: odir $(NAME)
 
 $(NAME): $(OBJS)
-	@make -C libft
 	@echo " - Making $(NAME)"
-	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY)
+	@$(CC) $(CFLAGS) -o $(NAME) $^ $(LIBRARY) -I$(INCLUDES_PATH)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@echo " - Compiling $<"
@@ -38,13 +40,11 @@ odir:
 	@mkdir -p $(OBJS_PATH)
 
 clean:
-	@make -C libft clean
-	@echo " - Cleaning objs"
+	@echo " - Clearing objects files"
 	@rm -f $(OBJS)
 
 fclean: clean
-	@make -C libft fclean
-	@echo " - Cleaning executable"
+	@echo " - Clearing executable file"
 	@rm -f $(NAME)
 
 re: fclean all

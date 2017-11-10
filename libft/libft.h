@@ -6,17 +6,20 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 05:37:07 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/09 13:29:29 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 08:58:08 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # define STR_SPLIT_CUR_WRD 0
 # define STR_SPLIT_MATCH 1
+
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 
 void			*ft_memset(void *s, int c, size_t n);
 void			ft_bzero(void *s, size_t n);
@@ -73,6 +76,8 @@ char			*ft_strjoin_free12(char *s1, char *s2);
 char			*ft_strsub_start(char *str, int start);
 char			*ft_strjoin_free1(char *s1, char *s2);
 void			ft_exit(char *str, int exit_value);
+double			ft_todegrees(double d);
+double			ft_toradians(double d);
 
 typedef struct	s_list
 {

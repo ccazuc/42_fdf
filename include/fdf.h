@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 11:29:43 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 14:32:33 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct			s_env
 	int					height;
 	void				*mlx_ptr;
 	void				*mlx_win;
+	void				*mlx_img;
+	char				*mlx_img_data;
 }						t_env;
 
 void					parse(int argc, char **argv, t_env *env);
@@ -73,5 +75,6 @@ void					init_window(t_env *env);
 int						get_x_coordinate(t_point point, t_env *env);
 int						get_y_coordinate(t_point point, t_env *env);
 void					draw_all_lines(t_env *env);
+void					pixel_put(t_env *env, int x, int y, unsigned int color);
 
 #endif

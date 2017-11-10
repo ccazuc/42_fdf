@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 11:33:00 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/10 12:27:49 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_line(t_env *env, t_line line)
 	{
 		x = (int)(line.src_x + line.diff_x * ratio);
 		y = (int)(line.src_y + line.diff_y * ratio);
-		mlx_pixel_put(env->mlx_ptr, env->mlx_win, x, y, 16777215);
+		pixel_put(env, x, y, 16777215);
 		ratio += 1. / line.len;
 	}	
 }

@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 07:42:11 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:43:32 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	draw_line(t_env *env, t_line line)
 		line.src_y >= WINDOW_HEIGHT))
 		return ;
 	ratio = .0;
+	++env->line_displayed;
 	while (ratio <= 1)
 	{
 		height = line.p1.y + (line.p2.y - line.p1.y) * ratio;
@@ -62,6 +63,7 @@ void	draw_all_lines(t_env *env)
 	int		i;
 	int		j;
 
+	env->line_displayed = 0;
 	i = -1;
 	while (++i < env->nb_line)
 	{
@@ -71,7 +73,7 @@ void	draw_all_lines(t_env *env)
 			if (j < env->line_len - 1)
 				draw_line_prepare(env, env->array[i][j], env->array[i][j + 1]);
 			if (i < env->nb_line - 1)
-				draw_line_prepare(env, env->array[i][j], env->array[i + 1][j]);
+				draw_line_prepare(env, env->array[i][j], env->array[i + 1][j]);	
 		}
 	}
 }

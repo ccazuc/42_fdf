@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 09:01:41 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:39:02 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ typedef struct			s_env
 	int					is_zoom;
 	int					is_unzoom;
 	int					should_draw;
+	int					block_displayed;
+	int					line_displayed;
 }						t_env;
 
 void					parse(int argc, char **argv, t_env *env);

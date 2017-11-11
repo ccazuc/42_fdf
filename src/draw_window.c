@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:10:34 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 07:28:31 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 08:20:52 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	mod_zoom(t_env *env)
 {
 	if (env->is_unzoom == -1 && env->zoom == 1)
-		return;
+		return ;
 	env->zoom += env->is_zoom;
 	env->zoom += env->is_unzoom;
 }
@@ -33,7 +33,6 @@ void	reset_window(t_env *env)
 	unsigned int	len;
 
 	len = WINDOW_WIDTH * WINDOW_HEIGHT * env->bpp / 8;
-	//printf("len: %d\n", len);
 	i = 0;
 	while (i < len)
 	{

@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 07:28:25 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:43:45 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ typedef struct			s_env
 }						t_env;
 
 void					parse(int argc, char **argv, t_env *env);
-void					fill_datas_in_list(int fd, t_fdflist **list, t_env *env);
+void					fill_datas_in_list(int fd, t_fdflist **list,
+							t_env *env);
 void					fill_datas_in_array(t_fdflist **list, t_env *env);
 void					check_line_len(t_fdflist *list, t_env *env);
 t_fdflist				*create_elem(char *data);

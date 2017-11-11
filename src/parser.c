@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:19:47 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 17:41:38 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 08:27:45 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,9 @@ void	create_points(char *datas, t_env *env, int index)
 			env->min_height = point->y;
 		env->array[point->z][point->x] = *point;
 		free(point);
+		free(tmp[i]);
 	}
+	free(tmp);
 }
 
 void	fill_datas_in_array(t_fdflist **list, t_env *env)
@@ -93,6 +95,7 @@ void	fill_datas_in_array(t_fdflist **list, t_env *env)
 		create_points(tmp_list->datas, env, i);
 		prev_list = tmp_list;
 		tmp_list = tmp_list->next;
+		free(prev_list->datas);
 		free(prev_list);
 	}
 }

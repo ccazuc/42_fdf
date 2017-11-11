@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 06:31:57 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 06:34:29 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:39:45 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_fdflist	*create_elem(char *data)
 	return (result);
 }
 
-void	list_push_back(t_fdflist **begin_list, char *data)
+void		list_push_back(t_fdflist **begin_list, char *data)
 {
 	t_fdflist	*list;
 

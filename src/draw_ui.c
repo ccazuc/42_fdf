@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 17:25:15 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 18:00:48 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:38:55 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	draw_position(t_env *env)
 
 void	draw_ui(t_env *env)
 {
-	draw_position(env);	
+	draw_position(env);
 }

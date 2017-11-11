@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:40:46 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 17:22:49 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:42:02 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ void	move(t_env *env, float angle)
 		env->position_x++;
 	if (env->move_right)
 		env->position_x--;
-	else
-	{
-		//printf("prev_x: %d, prev_z: %d\n", env->position_x, env->position_z);
-		//env->position_x += cos(-angle / 180. * 3.14);
-		//env->position_z += sin(-angle / 180. * 3.14);
-		//printf("after_x: %d, after_z: %d\n", env->position_x, env->position_z);
-	}
 	draw_window(env);
 }
 
@@ -41,7 +34,7 @@ void	move_forward(t_env *env)
 
 void	move_backward(t_env *env)
 {
-	move(env, -90);	
+	move(env, -90);
 }
 
 void	move_left(t_env *env)
@@ -51,5 +44,5 @@ void	move_left(t_env *env)
 
 void	move_right(t_env *env)
 {
-	move(env, 0);	
+	move(env, 0);
 }

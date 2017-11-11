@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 06:33:45 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:42:11 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	draw_line(t_env *env, t_line line)
 
 	if ((line.src_x < 0 || line.dest_x >= WINDOW_WIDTH) && (line.src_y < 0 ||
 		line.src_y >= WINDOW_HEIGHT))
-		return;
+		return ;
 	ratio = .0;
 	while (ratio <= 1)
 	{
@@ -29,16 +29,14 @@ void	draw_line(t_env *env, t_line line)
 		x = (int)(line.src_x + line.diff_x * ratio);
 		y = (int)(line.src_y + line.diff_y * ratio);
 		pixel_put(env, x, y, get_color(env, height));
-		//mlx_pixel_put(env->mlx_ptr, env->mlx_win, x, y, 16777215);
 		ratio += 1. / line.len;
-	}	
+	}
 }
 
 void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
 {
 	t_line	line;
 
-	//printf("draw_line_prepare\n");
 	line.src_x = get_x_coordinate(p1, env);
 	line.src_y = get_y_coordinate(p1, env);
 	line.dest_x = get_x_coordinate(p2, env);

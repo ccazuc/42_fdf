@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 12:49:31 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 08:28:45 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 08:40:44 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int		get_line_len(char *datas)
 
 	tmp = ft_strsplit(datas, ' ');
 	i = 0;
+	if (!tmp)
+		return (0);
 	while (tmp[i])
 	{
 		free(tmp[i]);
 		++i;
 	}
-	free(tmp);
+		free(tmp);
 	return (i);
 }
 

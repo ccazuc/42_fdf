@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:19:47 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 08:27:45 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 08:41:30 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	create_points(char *datas, t_env *env, int index)
 	int		i;
 	t_point	*point;
 
-	tmp = ft_strsplit(datas, ' ');
+	if (!(tmp = ft_strsplit(datas, ' ')))
+		return ;
 	i = -1;
 	while (tmp[++i])
 	{

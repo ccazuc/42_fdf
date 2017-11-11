@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:10:34 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 09:10:42 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:17:16 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	mod_zoom(t_env *env)
 {
-	if (env->is_unzoom == -1 && env->zoom == 1)
-		return ;
-	if (env->is_unzoom != -1 && env->zoom != 1)
+	if (env->is_unzoom != -1 && env->is_zoom != 1)
 		return ;
 	env->should_draw = 1;
 	env->zoom += env->is_zoom;
@@ -27,7 +25,7 @@ void	draw_window(t_env *env)
 {
 	if (env->should_draw)
 	{
-		printf("Draw updated\n");
+		reset_window(env);
 		draw_points(env);
 		draw_all_lines(env);
 		env->should_draw = 0;

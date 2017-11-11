@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 08:44:38 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 17:47:32 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:22:14 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		get_x_coordinate(t_point point, t_env *env)
 	x = env->position_x + (point.x - point.z) / 1.32;
 	//printf("x: %f\n", x);
 	//printf("x: %f\n", x);
-	return ((int)((x + 8) * 20));
+	return ((int)((x + 8) * env->zoom));
 }
 
 int		get_y_coordinate(t_point point, t_env *env)
@@ -34,7 +34,7 @@ int		get_y_coordinate(t_point point, t_env *env)
 	//y = point.x * sin(ft_toradians(X_ANGLE)) + point.y * sin(ft_toradians(Y_ANGLE) + ft_toradians(120)) +
 	//	point.z * sin(ft_toradians(Z_ANGLE) - ft_toradians(120));
 	y = env->position_z + (point.x + 2 * -point.y + point.z) / 2.5;
-	return ((int)((y + 8 ) * 20));
+	return ((int)((y + 8 ) * env->zoom));
 }
 
 int		get_color(t_env *env, int y)

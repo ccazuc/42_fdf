@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 17:57:25 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 07:28:25 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ typedef struct			s_env
 	void				*mlx_img;
 	char				*mlx_img_data;
 	int					position_x;
+	int					position_y;
 	int					position_z;
+	int					rotation_x;
+	int					rotation_y;
+	int					rotation_z;
 	int					bpp;
 	int					move_for;
 	int					move_back;
@@ -76,6 +80,9 @@ typedef struct			s_env
 	time_t				last_time;
 	int					nb_tick;
 	int					fps;
+	int					zoom;
+	int					is_zoom;
+	int					is_unzoom;
 }						t_env;
 
 void					parse(int argc, char **argv, t_env *env);
@@ -102,5 +109,6 @@ int						key_down_handler(int keycode, void *datas);
 int						key_up_handler(int keycode, void *datas);
 void					draw_ui(t_env *env);
 int						get_color(t_env *env, int y);
+void					mod_zoom(t_env *env);
 
 #endif

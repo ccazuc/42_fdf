@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 09:43:32 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:57:40 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
 	t_line	line;
 
 	line.src_x = get_x_coordinate(p1, env);
-	line.src_y = get_y_coordinate(p1, env);
 	line.dest_x = get_x_coordinate(p2, env);
-	line.dest_y = get_y_coordinate(p2, env);
 	if (line.src_x < 0 && line.dest_x < 0)
 		return ;
-	if (line.src_y < 0 && line.dest_y < 0)
-		return ;
 	if (line.src_x > WINDOW_WIDTH && line.dest_x > WINDOW_WIDTH)
+		return ;
+	line.dest_y = get_y_coordinate(p2, env);
+	line.src_y = get_y_coordinate(p1, env);
+	if (line.src_y < 0 && line.dest_y < 0)
 		return ;
 	if (line.src_y > WINDOW_HEIGHT && line.dest_y > WINDOW_HEIGHT)
 		return ;
@@ -65,15 +65,13 @@ void	draw_all_lines(t_env *env)
 
 	env->line_displayed = 0;
 	i = -1;
-	while (++i < env->nb_line)
+	while (++i < env->nb_line - 1)
 	{
 		j = -1;
-		while (++j < env->line_len)
+		while (++j < env->line_len - 1)
 		{
-			if (j < env->line_len - 1)
-				draw_line_prepare(env, env->array[i][j], env->array[i][j + 1]);
-			if (i < env->nb_line - 1)
-				draw_line_prepare(env, env->array[i][j], env->array[i + 1][j]);	
+			draw_line_prepare(env, env->array[i][j], env->array[i][j + 1]);
+			draw_line_prepare(env, env->array[i][j], env->array[i + 1][j]);	
 		}
 	}
 }

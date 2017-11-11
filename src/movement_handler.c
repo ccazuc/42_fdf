@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:40:46 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 07:42:02 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:11:08 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	move(t_env *env, float angle)
 {
 	angle = 5;
+	if (!env->move_for && !env->move_back && !env->move_left && !env->move_right)
+		return ;
 	reset_window(env);
 	if (env->move_for)
 		env->position_z++;
@@ -24,7 +26,8 @@ void	move(t_env *env, float angle)
 		env->position_x++;
 	if (env->move_right)
 		env->position_x--;
-	draw_window(env);
+	env->should_draw = 1;
+	//draw_window(env);
 }
 
 void	move_forward(t_env *env)

@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:16:08 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 07:26:18 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:01:54 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main(int argc, char **argv)
 	env->zoom = 20;
 	env->is_zoom = 0;
 	env->is_unzoom = 0;
+	env->should_draw = 1;
 	env->last_time = time(NULL);
 	env->fps = 0;
 	parse(argc, argv, env);

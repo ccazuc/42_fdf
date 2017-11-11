@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 17:11:24 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 07:26:02 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 09:09:20 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		loop_handler(void *data)
 		env->fps = env->nb_tick;
 		env->nb_tick = 0;
 	}
+	draw_window(env);
 	draw_ui(env);
 	return (0);
 }

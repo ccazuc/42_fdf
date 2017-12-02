@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 07:55:03 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 08:19:46 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 15:38:32 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_window(t_env *env)
 		&line_size, &order)))
 		ft_exit("Error, failed to load image datas.", -1);
 	env->bpp = bpp;
+	env->can_draw = 1;
 	draw_window(env);
 	mlx_hook(env->mlx_win, 2, 1, key_down_handler, env);
 	mlx_hook(env->mlx_win, 3, 2, key_up_handler, env);

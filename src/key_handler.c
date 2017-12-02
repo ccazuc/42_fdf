@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:13:26 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 11:59:34 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 16:12:36 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		key_down_handler(int keycode, void *params)
 	t_env *env;
 
 	env = params;
-	printf("Key Down: %d\n", keycode);
+	//printf("Key Down: %d\n", keycode);
 	if (keycode == 2)
 		env->move_right = 1;
 	else if (keycode == 1)
@@ -69,7 +69,7 @@ int		key_up_handler(int keycode, void *params)
 	t_env *env;
 
 	env = params;
-	printf("Key Up: %d\n", keycode);
+	//printf("Key Up: %d\n", keycode);
 	if (keycode == 2)
 		env->move_right = 0;
 	else if (keycode == 1)

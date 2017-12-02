@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:40:46 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 16:27:07 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 15:12:09 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	move(t_env *env, float angle)
 	if (env->drop_down)
 		env->position_y++;*/
 	//move_scene(env, 0);
+	//printf("IN MOVE pos_x: %d, pos_z: %d\n", env->position_x, env->position_z);
 	env->should_draw = 1;
 }
 

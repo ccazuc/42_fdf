@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 13:18:43 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 15:10:43 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
 	draw_line(env, line);
 }
 
-void	draw_all_lines(t_env *env)
+void	draw_all_lines(t_env *env, int start, int end)
 {
 	int		i;
 	int		j;
@@ -70,8 +70,8 @@ void	draw_all_lines(t_env *env)
 	i = -1;
 	while (++i < env->nb_line)
 	{
-		j = -1;
-		while (++j < env->line_len)
+		j = start - 1;
+		while (++j < end + 1)
 		{
 			if (j < env->line_len - 1)
 				draw_line_prepare(env, env->array[i][j], env->array[i][j + 1]);

@@ -6,13 +6,13 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:08:42 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 13:24:15 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 15:10:51 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw_points(t_env *env)
+void	draw_points(t_env *env, int start, int end)
 {
 	int		i;
 	int		j;
@@ -23,8 +23,8 @@ void	draw_points(t_env *env)
 	i = -1;
 	while (++i < env->nb_line)
 	{
-		j = -1;
-		while (++j < env->line_len)
+		j = start -1;
+		while (++j < end + 1 && ++j < env->line_len)
 		{
 			if (new_z(env, env->array[i][j]) > 0)
 				continue ;

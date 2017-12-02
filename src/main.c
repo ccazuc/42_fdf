@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:16:08 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 09:01:54 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 13:18:24 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		main(int argc, char **argv)
 	env->rotation_x = 120;
 	env->rotation_y = 120;
 	env->rotation_z = 120;
-	env->position_x = 0;
-	env->position_y = -20;
-	env->position_z = 0;
+	env->position_x = 18;
+	env->position_y = -40;
+	env->position_z = 29;
 	env->nb_tick = 0;
 	env->zoom = 20;
 	env->is_zoom = 0;

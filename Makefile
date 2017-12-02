@@ -13,7 +13,7 @@ SRCS_NAME = main.c \
 			list_utils.c \
 			init_window.c \
 			get_next_line.c \
-			get_coordinates.c \
+			get_coordinates2.c \
 			check_file.c \
 			draw_line.c \
 			pixel_put.c \

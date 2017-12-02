@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 09:19:47 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 08:41:30 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/15 08:44:23 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	parse(int argc, char **argv, t_env *env)
 
 	list = NULL;
 	if (argc != 2)
-		ft_exit("Error, incorrect number of argument.\n", -1);
+		ft_exit("Error, incorrect number of argument.", -1);
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		ft_exit("Error, file not found.\n", -1);
+		ft_exit("Error, file not found.", -1);
 	fill_datas_in_list(fd, &list, env);
-	printf("call check_line_len\n");
+	printf("call check_line_len");
 	check_line_len(list, env);
 	fill_datas_in_array(&list, env);
 }

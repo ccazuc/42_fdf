@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:08:42 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/11 09:39:33 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/11/11 13:24:15 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	draw_points(t_env *env)
 		j = -1;
 		while (++j < env->line_len)
 		{
+			if (new_z(env, env->array[i][j]) > 0)
+				continue ;
 			x = get_x_coordinate(env->array[i][j], env);
 			if (x > WINDOW_WIDTH)
 				continue ;
 			y = get_y_coordinate(env->array[i][j], env);
 			if (y > WINDOW_HEIGHT)
-				return ;
+				continue ;
 			if (x >= 0 && y >= 0)
 			{
 				++env->block_displayed;

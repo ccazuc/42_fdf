@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/12/02 16:56:51 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 17:30:01 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include <time.h>
 # include <pthread.h>
 
-typedef struct			s_thread t_thread;
+typedef struct s_thread	t_thread;
 
 typedef struct			s_point
 {
@@ -101,7 +101,7 @@ typedef struct			s_env
 	int					can_draw;
 }						t_env;
 
-typedef struct			s_thread
+struct					s_thread
 {
 	int					start;
 	int					end;
@@ -112,7 +112,7 @@ typedef struct			s_thread
 	int					line_drawn;
 	int					id;
 	int					draw_finished;
-}						t_thread;	
+};
 
 void					parse(int argc, char **argv, t_env *env);
 void					fill_datas_in_list(int fd, t_fdflist **list,
@@ -124,10 +124,12 @@ void					list_push_back(t_fdflist **begin_list, char *data);
 void					init_window(t_env *env);
 int						get_x_coordinate(t_point point, t_env *env);
 int						get_y_coordinate(t_point point, t_env *env);
-void					draw_all_lines(t_env *env, t_thread *thread, int start, int end);
+void					draw_all_lines(t_env *env,
+						t_thread *thread, int start, int end);
 void					pixel_put(t_env *env, int x, int y, unsigned int color);
 void					draw_window(t_env *env);
-void					draw_points(t_env *env, t_thread *thread, int start, int end);
+void					draw_points(t_env *env,
+						t_thread *thread, int start, int end);
 void					move(t_env *env, float angle);
 void					reset_window(t_env *env);
 int						loop_handler(void *datas);

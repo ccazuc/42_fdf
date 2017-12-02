@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 11:45:24 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/12/02 16:58:10 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 17:15:47 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,11 @@ void	*thread_run(void *data)
 void	create_thread(t_env *env)
 {
 	int		i;
+	int		gg_la_norne;
 
-	if (!(env->thread_list = malloc(NB_THREAD * sizeof(*env->thread_list))))
+	gg_la_norme = NB_THREAD;
+	if (!(env->thread_list = malloc(gg_la_norme
+	* sizeof(*env->thread_list))))
 		ft_exit("Error, out of memory.", EXIT_FAILURE);
 	i = -1;
 	while (++i < NB_THREAD)

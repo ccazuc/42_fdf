@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 09:17:41 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/11/10 08:33:52 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 16:37:02 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int				get_next_line(const int fd, char **line)
 			return (-1);
 		if (!(env->datas = malloc(1)))
 			return (-1);
+		env->datas[0] = '\0';
 		env->buff_len = 0;
 		env->buff_pos = 0;
 		env->line = -1;

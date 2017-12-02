@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:40:46 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/12/02 15:12:09 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 16:52:36 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	move_scene(t_env *env, float angle)
 	double	tmp;
 
 	tmp = 0;
-	if (!env->move_for && !env->move_back && !env->move_left && !env->move_right)
+	if (!env->move_for && !env->move_back && !env->move_left &&
+	!env->move_right)
 		return ;
 	if (env->move_for)
 		tmp = 90;
@@ -49,39 +50,5 @@ void	move(t_env *env, float angle)
 		env->position_x++;
 	if (env->move_right)
 		env->position_x--;
-	/*if (env->space_down)
-		env->position_y--;
-	if (env->move_cam_top)
-		env->rotation_x++;
-	if (env->move_cam_bot)
-		env->rotation_x--;
-	if (env->move_cam_left)
-		env->rotation_y++;
-	if (env->move_cam_right)
-		env->rotation_y--;
-	if (env->drop_down)
-		env->position_y++;*/
-	//move_scene(env, 0);
-	//printf("IN MOVE pos_x: %d, pos_z: %d\n", env->position_x, env->position_z);
 	env->should_draw = 1;
-}
-
-void	move_forward(t_env *env)
-{
-	move(env, 90);
-}
-
-void	move_backward(t_env *env)
-{
-	move(env, -90);
-}
-
-void	move_left(t_env *env)
-{
-	move(env, 180);
-}
-
-void	move_right(t_env *env)
-{
-	move(env, 0);
 }

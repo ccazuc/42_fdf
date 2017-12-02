@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:29:32 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/12/02 16:14:06 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 16:56:51 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define Y_ANGLE 100
 # define Z_ANGLE 100
 # define WINDOW_NAME "cc"
-# define NB_THREAD 1
+# define NB_THREAD 10
 
 # include "../libft/libft.h"
 # include "get_next_line.h"
@@ -28,7 +28,7 @@
 # include <stdio.h>
 # include <math.h>
 # include <time.h>
-#include <pthread.h>
+# include <pthread.h>
 
 typedef struct			s_thread t_thread;
 
@@ -108,13 +108,15 @@ typedef struct			s_thread
 	t_env				*env;
 	pthread_t			thread;
 	pthread_mutex_t		mutex;
+	int					bloc_drawn;
+	int					line_drawn;
 	int					id;
 	int					draw_finished;
 }						t_thread;	
 
 void					parse(int argc, char **argv, t_env *env);
 void					fill_datas_in_list(int fd, t_fdflist **list,
-							t_env *env);
+						t_env *env);
 void					fill_datas_in_array(t_fdflist **list, t_env *env);
 void					check_line_len(t_fdflist *list, t_env *env);
 t_fdflist				*create_elem(char *data);
@@ -122,14 +124,10 @@ void					list_push_back(t_fdflist **begin_list, char *data);
 void					init_window(t_env *env);
 int						get_x_coordinate(t_point point, t_env *env);
 int						get_y_coordinate(t_point point, t_env *env);
-void					draw_all_lines(t_env *env, int start, int end);
+void					draw_all_lines(t_env *env, t_thread *thread, int start, int end);
 void					pixel_put(t_env *env, int x, int y, unsigned int color);
 void					draw_window(t_env *env);
-void					draw_points(t_env *env, int start, int end);
-void					move_forward(t_env *env);
-void					move_backward(t_env *env);
-void					move_left(t_env *env);
-void					move_right(t_env *env);
+void					draw_points(t_env *env, t_thread *thread, int start, int end);
 void					move(t_env *env, float angle);
 void					reset_window(t_env *env);
 int						loop_handler(void *datas);
@@ -143,6 +141,5 @@ double					new_y(t_env *env, t_point point);
 double					new_z(t_env *env, t_point point);
 void					create_thread(t_env *env);
 t_env					*init_env(void);
-int						is_draw_finished(t_env *env);
 
 #endif

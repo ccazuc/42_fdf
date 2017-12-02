@@ -6,13 +6,13 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 10:27:02 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/12/02 15:10:43 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 16:53:59 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw_line(t_env *env, t_line line)
+void	draw_line(t_env *env, t_thread *thread, t_line line)
 {
 	double	ratio;
 	int		x;
@@ -23,7 +23,7 @@ void	draw_line(t_env *env, t_line line)
 		line.src_y > WINDOW_HEIGHT))
 		return ;
 	ratio = .0;
-	++env->line_displayed;
+	++thread->line_drawn;
 	while (ratio <= 1)
 	{
 		height = line.p1.y + (line.p2.y - line.p1.y) * ratio;
@@ -34,11 +34,10 @@ void	draw_line(t_env *env, t_line line)
 	}
 }
 
-void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
+void	draw_line_prepare(t_env *env, t_thread *thread, t_point p1, t_point p2)
 {
 	t_line	line;
 
-	//printf("p1: %f, p2: %f\n", new_z(env, p1), new_z(env, p2));
 	if (new_z(env, p2) > 0 || new_z(env, p1) > 0)
 		return ;
 	line.src_x = get_x_coordinate(p1, env);
@@ -58,25 +57,27 @@ void	draw_line_prepare(t_env *env, t_point p1, t_point p2)
 	line.p1 = p1;
 	line.p2 = p2;
 	line.len = sqrt(pow(line.diff_x, 2) + pow(line.diff_y, 2));
-	draw_line(env, line);
+	draw_line(env, thread, line);
 }
 
-void	draw_all_lines(t_env *env, int start, int end)
+void	draw_all_lines(t_env *env, t_thread *thread, int start, int end)
 {
 	int		i;
 	int		j;
 
-	env->line_displayed = 0;
 	i = -1;
+	thread->line_drawn = 0;
 	while (++i < env->nb_line)
 	{
 		j = start - 1;
 		while (++j < end + 1)
 		{
 			if (j < env->line_len - 1)
-				draw_line_prepare(env, env->array[i][j], env->array[i][j + 1]);
+				draw_line_prepare(env, thread, env->array[i][j],
+				env->array[i][j + 1]);
 			if (i < env->nb_line - 1)
-				draw_line_prepare(env, env->array[i][j], env->array[i + 1][j]);	
+				draw_line_prepare(env, thread, env->array[i][j],
+				env->array[i + 1][j]);
 		}
 	}
 }

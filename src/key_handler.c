@@ -6,7 +6,7 @@
 /*   By: ccazuc <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:13:26 by ccazuc            #+#    #+#             */
-/*   Updated: 2017/12/02 16:12:36 by ccazuc           ###   ########.fr       */
+/*   Updated: 2017/12/02 16:51:50 by ccazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	key_down_handler_bis(int keycode, t_env *env)
 	else if (keycode == 123)
 		env->move_cam_left = 1;
 	else if (keycode == 6)
-		env->drop_down = 1; 
+		env->drop_down = 1;
 }
 
 int		key_down_handler(int keycode, void *params)
@@ -51,7 +51,7 @@ int		key_down_handler(int keycode, void *params)
 }
 
 void	key_up_handler_bis(int keycode, t_env *env)
-{	
+{
 	if (keycode == 124)
 		env->move_cam_right = 0;
 	else if (keycode == 125)
